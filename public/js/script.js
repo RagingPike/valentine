@@ -72,7 +72,7 @@ const answers_yes = {
 
 let language = "english";
 let i = 1;
-let size = 50;
+let size = 100;
 let clicks = 0;
 
 const no_button = document.getElementById("no-button");
@@ -152,4 +152,5 @@ function changeLanguage() {
       ? "Yepppie, see you sooonnn :3"
       : "❤️🥹❤️";
 }
+
 

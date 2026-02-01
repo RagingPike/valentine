@@ -102,8 +102,8 @@ no_button.addEventListener("click", () => {
     size = 50;
     no_button.innerText = answers_no[language][0];
     yes_button.innerText = answers_yes[language];
-    yes_button.style.height = "50px";
-    yes_button.style.width = "50px";
+    yes_button.style.height = "auto";
+    yes_button.style.width = "auto";
   }
 });
 
@@ -152,3 +152,4 @@ function changeLanguage() {
       ? "Yepppie, see you sooonnn :3"
       : "❤️🥹❤️";
 }
+

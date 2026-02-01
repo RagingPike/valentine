@@ -1,15 +1,19 @@
-/* 🎵 Background Music */
+/* =======================
+   🎵 Background Music
+======================= */
 const bgm = document.getElementById("bgm");
 let musicPlayed = false;
 
 function playMusic() {
-  if (!musicPlayed) {
+  if (!musicPlayed && bgm) {
     bgm.play().catch(() => {});
     musicPlayed = true;
   }
 }
 
-/* 🎀 Personalised Name from URL */
+/* =======================
+   🎀 Personalised Name
+======================= */
 const params = new URLSearchParams(window.location.search);
 const personName = params.get("name");
 
@@ -18,7 +22,9 @@ if (personName) {
   questionHeading.innerText = `${personName}, will you be my Valentine? ❤️`;
 }
 
-/* 🌍 Language Data */
+/* =======================
+   🌍 Language Data
+======================= */
 const answers_no = {
   english: [
     "No",
@@ -70,22 +76,30 @@ const answers_yes = {
   hindi: "हाँ"
 };
 
-let language = "english";
-let i = 1;
-let size = 100;
-let clicks = 0;
-
+/* =======================
+   🔘 Button Setup
+======================= */
 const no_button = document.getElementById("no-button");
 const yes_button = document.getElementById("yes-button");
 
-const INITIAL_YES_HEIGHT = 40;
-const INITIAL_YES_WIDTH = 80;
+let language = "english";
+let index = 1;
+let clicks = 0;
 
-/* ❌ NO BUTTON LOGIC */
+// Read ACTUAL initial size from CSS
+const INITIAL_YES_HEIGHT = yes_button.offsetHeight;
+const INITIAL_YES_WIDTH = yes_button.offsetWidth;
+
+let size = INITIAL_YES_HEIGHT;
+const MAX_SIZE = 220;
+
+/* =======================
+   ❌ NO BUTTON LOGIC
+======================= */
 no_button.addEventListener("click", () => {
   playMusic();
 
-  let banner = document.getElementById("banner");
+  const banner = document.getElementById("banner");
   if (clicks === 0) {
     banner.src = "public/images/no.gif";
     refreshBanner();
@@ -93,28 +107,37 @@ no_button.addEventListener("click", () => {
 
   clicks++;
 
+  // Grow YES button
   size += Math.floor(Math.random() * 20);
+  if (size > MAX_SIZE) size = MAX_SIZE;
+
   yes_button.style.height = `${size}px`;
   yes_button.style.width = `${size}px`;
 
-  if (i < answers_no[language].length) {
-    no_button.innerText = answers_no[language][i];
-    i++;
+  // Change NO text
+  if (index < answers_no[language].length) {
+    no_button.innerText = answers_no[language][index];
+    index++;
   } else {
-    i = 1;
+    // Reset everything
+    index = 1;
     size = INITIAL_YES_HEIGHT;
+
     no_button.innerText = answers_no[language][0];
     yes_button.innerText = answers_yes[language];
-    yes_button.style.height = "${INITIAL_YES_HEIGHT}px";
-    yes_button.style.width = "${INITIAL_YES_WIDTH}px";
+
+    yes_button.style.height = `${INITIAL_YES_HEIGHT}px`;
+    yes_button.style.width = `${INITIAL_YES_WIDTH}px`;
   }
 });
 
-/* ✅ YES BUTTON */
+/* =======================
+   ✅ YES BUTTON LOGIC
+======================= */
 yes_button.addEventListener("click", () => {
   playMusic();
 
-  let banner = document.getElementById("banner");
+  const banner = document.getElementById("banner");
   banner.src = "public/images/yes.gif";
   refreshBanner();
 
@@ -122,15 +145,19 @@ yes_button.addEventListener("click", () => {
   document.querySelector(".message").style.display = "block";
 });
 
-/* 🔄 Reload GIF */
+/* =======================
+   🔄 Refresh GIF
+======================= */
 function refreshBanner() {
-  let banner = document.getElementById("banner");
+  const banner = document.getElementById("banner");
   const src = banner.src;
   banner.src = "";
   banner.src = src;
 }
 
-/* 🌐 Language Switch */
+/* =======================
+   🌐 Language Switch
+======================= */
 function changeLanguage() {
   const select = document.getElementById("language-select");
   language = select.value;
@@ -150,12 +177,15 @@ function changeLanguage() {
   yes_button.innerText = answers_yes[language];
   no_button.innerText = answers_no[language][0];
 
+  // Reset YES size on language change
+  size = INITIAL_YES_HEIGHT;
+  index = 1;
+
+  yes_button.style.height = `${INITIAL_YES_HEIGHT}px`;
+  yes_button.style.width = `${INITIAL_YES_WIDTH}px`;
+
   document.getElementById("success-message").innerText =
     language === "english"
       ? "Yepppie, see you sooonnn :3"
       : "❤️🥹❤️";
 }
-
-
-
-

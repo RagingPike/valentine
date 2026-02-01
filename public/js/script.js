@@ -78,6 +78,9 @@ let clicks = 0;
 const no_button = document.getElementById("no-button");
 const yes_button = document.getElementById("yes-button");
 
+const INITIAL_YES_HEIGHT = 40;
+const INITIAL_YES_WIDTH = 80;
+
 /* ❌ NO BUTTON LOGIC */
 no_button.addEventListener("click", () => {
   playMusic();
@@ -99,11 +102,11 @@ no_button.addEventListener("click", () => {
     i++;
   } else {
     i = 1;
-    size = 100;
+    size = INITIAL_YES_HEIGHT;
     no_button.innerText = answers_no[language][0];
     yes_button.innerText = answers_yes[language];
-    yes_button.style.height = "auto";
-    yes_button.style.width = "auto";
+    yes_button.style.height = "${INITIAL_YES_HEIGHT}px";
+    yes_button.style.width = "${INITIAL_YES_WIDTH}px";
   }
 });
 
@@ -152,6 +155,7 @@ function changeLanguage() {
       ? "Yepppie, see you sooonnn :3"
       : "❤️🥹❤️";
 }
+
 
 
 

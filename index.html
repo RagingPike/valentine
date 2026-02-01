@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For You ❤️</title>
+    <link rel="stylesheet" href="./public/css/style.css" />
+  </head>
+
+  <body>
+    <!-- Romantic Background Music -->
+    <audio id="bgm" loop>
+      <source src="./public/audio/bgm.mp3" type="audio/mp3" />
+    </audio>
+
+    <div class="container">
+      <div class="banner-gif">
+        <img id="banner" src="./public/images/mid.gif" alt="banner" />
+      </div>
+
+      <h1 id="question-heading">Will you be my Valentine?</h1>
+
+      <div class="buttons">
+        <button id="yes-button"><p>Yes</p></button>
+        <button id="no-button"><p>No</p></button>
+      </div>
+
+      <div class="message">
+        <h2 id="success-message">Yepppie, see you sooonnn :3</h2>
+
+        <h6>
+          Made with ❤️ by
+          <a class="creator" href="https://yourwebsite.com" target="_blank">
+            Rahul
+          </a>
+        </h6>
+      </div>
+
+      <div class="language-selector">
+        <label for="language-select">Choose Language:</label>
+        <select id="language-select" onchange="changeLanguage()">
+          <option value="english">English</option>
+          <option value="malayalam">മലയാളം</option>
+          <option value="tamil">தமிழ்</option>
+          <option value="telugu">తెలుగు</option>
+          <option value="hindi">हिंदी</option>
+        </select>
+      </div>
+    </div>
+
+    <script src="./public/js/script.js"></script>
+  </body>
+</html>

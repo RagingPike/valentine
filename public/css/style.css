@@ -1,0 +1,123 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Page layout */
+body {
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Main container */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  margin-top: 20px;
+  padding: 20px;
+}
+
+/* Banner GIF */
+.banner-gif {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.banner-gif img {
+  height: 250px;
+  width: auto;
+}
+
+/* Buttons wrapper */
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+/* YES button */
+#yes-button {
+  margin: 10px;
+  height: 40px;
+  width: 80px;
+
+  border: none;
+  cursor: pointer;
+  background-color: green;
+  color: white;
+}
+
+#yes-button p {
+  margin: 0;
+}
+
+/* NO button */
+#no-button {
+  margin: 10px;
+  height: 40px;
+  width: 80px;
+
+  border: none;
+  cursor: pointer;
+  background-color: red;
+  color: white;
+}
+
+#no-button p {
+  margin: 0;
+}
+
+/* Success message */
+.message {
+  display: none;
+  margin-top: 20px;
+}
+
+/* Creator link */
+.creator {
+  text-decoration: none;
+  color: #333;
+}
+
+.creator:hover {
+  text-decoration: underline;
+}
+
+/* Language selector */
+.language-selector {
+  margin-top: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.language-selector select {
+  padding: 5px;
+  font-size: 16px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  body {
+    padding: 0 20px;
+  }
+
+  .banner-gif img {
+    height: 200px;
+  }
+}

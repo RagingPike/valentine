@@ -67,13 +67,21 @@ body {
 /* NO button */
 #no-button {
   margin: 10px;
-  height: 40px;
-  width: 80px;
+  min-height: 40px;
+  min-width: 80px;
 
+  padding: 8px 12px;   /* 🔑 allows box to grow */
   border: none;
   cursor: pointer;
+
   background-color: red;
   color: white;
+
+  font-size: 14px;
+  text-align: center;
+
+  white-space: normal;   /* 🔑 allow text wrapping */
+  word-wrap: break-word; /* 🔑 prevent overflow */
 }
 
 #no-button p {
@@ -121,3 +129,4 @@ body {
     height: 200px;
   }
 }
+

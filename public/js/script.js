@@ -1,6 +1,6 @@
-/* =======================
+/* =========================
    🎵 Background Music
-======================= */
+========================= */
 const bgm = document.getElementById("bgm");
 let musicPlayed = false;
 
@@ -11,9 +11,9 @@ function playMusic() {
   }
 }
 
-/* =======================
+/* =========================
    🎀 Personalised Name
-======================= */
+========================= */
 const params = new URLSearchParams(window.location.search);
 const personName = params.get("name");
 
@@ -22,9 +22,9 @@ if (personName) {
   questionHeading.innerText = `${personName}, will you be my Valentine? ❤️`;
 }
 
-/* =======================
+/* =========================
    🌍 Language Data
-======================= */
+========================= */
 const answers_no = {
   english: [
     "No",
@@ -76,9 +76,9 @@ const answers_yes = {
   hindi: "हाँ"
 };
 
-/* =======================
-   🔘 Button Setup
-======================= */
+/* =========================
+   🔘 Buttons & State
+========================= */
 const no_button = document.getElementById("no-button");
 const yes_button = document.getElementById("yes-button");
 
@@ -86,16 +86,19 @@ let language = "english";
 let index = 1;
 let clicks = 0;
 
-// Read ACTUAL initial size from CSS
-const INITIAL_YES_HEIGHT = yes_button.offsetHeight;
-const INITIAL_YES_WIDTH = yes_button.offsetWidth;
-
+/* YES button sizing (BIG & DRAMATIC 😈) */
+const INITIAL_YES_HEIGHT = 60;
+const INITIAL_YES_WIDTH = 120;
 let size = INITIAL_YES_HEIGHT;
-const MAX_SIZE = 220;
+const MAX_SIZE = 420;
 
-/* =======================
+/* Apply initial size */
+yes_button.style.height = `${INITIAL_YES_HEIGHT}px`;
+yes_button.style.width = `${INITIAL_YES_WIDTH}px`;
+
+/* =========================
    ❌ NO BUTTON LOGIC
-======================= */
+========================= */
 no_button.addEventListener("click", () => {
   playMusic();
 
@@ -107,19 +110,19 @@ no_button.addEventListener("click", () => {
 
   clicks++;
 
-  // Grow YES button
-  size += Math.floor(Math.random() * 20);
+  /* 🔥 Grow YES button FAST */
+  size += Math.floor(Math.random() * 40) + 20;
   if (size > MAX_SIZE) size = MAX_SIZE;
 
   yes_button.style.height = `${size}px`;
   yes_button.style.width = `${size}px`;
 
-  // Change NO text
+  /* Change NO text */
   if (index < answers_no[language].length) {
     no_button.innerText = answers_no[language][index];
     index++;
   } else {
-    // Reset everything
+    /* Reset cycle */
     index = 1;
     size = INITIAL_YES_HEIGHT;
 
@@ -131,9 +134,9 @@ no_button.addEventListener("click", () => {
   }
 });
 
-/* =======================
+/* =========================
    ✅ YES BUTTON LOGIC
-======================= */
+========================= */
 yes_button.addEventListener("click", () => {
   playMusic();
 
@@ -145,9 +148,9 @@ yes_button.addEventListener("click", () => {
   document.querySelector(".message").style.display = "block";
 });
 
-/* =======================
+/* =========================
    🔄 Refresh GIF
-======================= */
+========================= */
 function refreshBanner() {
   const banner = document.getElementById("banner");
   const src = banner.src;
@@ -155,9 +158,9 @@ function refreshBanner() {
   banner.src = src;
 }
 
-/* =======================
+/* =========================
    🌐 Language Switch
-======================= */
+========================= */
 function changeLanguage() {
   const select = document.getElementById("language-select");
   language = select.value;
@@ -177,7 +180,7 @@ function changeLanguage() {
   yes_button.innerText = answers_yes[language];
   no_button.innerText = answers_no[language][0];
 
-  // Reset YES size on language change
+  /* Reset YES button size */
   size = INITIAL_YES_HEIGHT;
   index = 1;
 
